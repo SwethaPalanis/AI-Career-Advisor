@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.env
+venv/
+dataset/user_history.csv

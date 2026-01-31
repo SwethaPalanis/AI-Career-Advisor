@@ -1,0 +1,14 @@
+job_title,skills,year
+Software Engineer,"java,python,oops,ds,algorithms",2022
+Frontend Developer,"html,css,javascript,react",2023
+Backend Developer,"python,django,flask,sql",2023
+Full Stack Developer,"html,css,javascript,react,node,sql",2024
+Data Scientist,"python,ml,sql,deep learning",2023
+ML Engineer,"python,ml,tensorflow,aws",2024
+AI Engineer,"python,ml,genai,llm",2024
+Cloud Engineer,"aws,azure,devops,linux",2024
+DevOps Engineer,"docker,kubernetes,aws,ci/cd",2023
+Cyber Security Analyst,"networking,security,linux,siem",2023
+Mobile App Developer,"android,flutter,react native",2023
+UI UX Designer,"figma,ux research,wireframing,prototyping",2024
+QA Engineer,"manual testing,automation,selenium",2022
