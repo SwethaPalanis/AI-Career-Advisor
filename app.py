@@ -32,6 +32,7 @@ if 'username' not in st.session_state:
     st.session_state.username = ""
 
 # ---------------- LOGIN PAGE ----------------
+# ---------------- LOGIN PAGE ----------------
 if not st.session_state.logged_in:
     st.subheader("🔑 Login")
     username_input = st.text_input("Username")
@@ -45,7 +46,7 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.session_state.username = username_input
             st.success(f"Welcome {username_input}!")
-            st.experimental_rerun()
+            # Instead of st.experimental_rerun(), just show main app immediately
         else:
             st.error("❌ Invalid username or password")
 
