@@ -57,7 +57,7 @@ else:
     if st.sidebar.button("🔒 Logout"):
         st.session_state.logged_in = False
         st.session_state.username = ""
-        st.experimental_rerun()
+        st.rerun()
 
     # ---------------- LOAD DATA + MODEL ----------------
     df = pd.read_csv("dataset/jobs.csv")
