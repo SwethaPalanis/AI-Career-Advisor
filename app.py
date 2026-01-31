@@ -1,5 +1,5 @@
 # ----------------------------
-# AI Career Advisor - Streamlit App
+# AI Career Advisor - Streamlit App (Ready-to-Run)
 # ----------------------------
 
 import streamlit as st
@@ -14,6 +14,8 @@ if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 if 'username' not in st.session_state:
     st.session_state.username = ""
+if 'login_clicked' not in st.session_state:
+    st.session_state.login_clicked = False
 
 # ----------------------------
 # Load model & vectorizer
@@ -45,7 +47,6 @@ def predict_roles(user_skills):
     predicted_role = role_names[predictions.argmax()]
     
     # Example recommended skills logic
-    # Replace with your real recommendation logic
     recommended = [
         ("Python", 95),
         ("SQL", 80),
@@ -63,19 +64,33 @@ def login():
     st.title("🔐 AI Career Advisor Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
-    
+
     if st.button("Login"):
+        st.session_state.login_clicked = True
         if username == "user" and password == "1234":
             st.session_state.logged_in = True
             st.session_state.username = username
-            st.rerun()
+            st.experimental_rerun()  # Correct way
         else:
             st.error("❌ Invalid username or password")
+    
+    # Only show error if button clicked
+    if st.session_state.login_clicked and (username != "user" or password != "1234"):
+        st.error("❌ Invalid username or password")
+
+# ----------------------------
+# LOGOUT FUNCTION
+# ----------------------------
+def logout():
+    st.session_state.logged_in = False
+    st.session_state.username = ""
+    st.experimental_rerun()
 
 # ----------------------------
 # MAIN APP
 # ----------------------------
 def main():
+    # Sidebar
     st.sidebar.title(f"Welcome, {st.session_state.username}")
     st.sidebar.write("AI Career Advisor Dashboard")
     st.sidebar.button("Logout", on_click=logout)
@@ -115,14 +130,6 @@ def main():
 
             ax.invert_yaxis()
             st.pyplot(fig)
-
-# ----------------------------
-# LOGOUT FUNCTION
-# ----------------------------
-def logout():
-    st.session_state.logged_in = False
-    st.session_state.username = ""
-    st.rerun()
 
 # ----------------------------
 # APP FLOW CONTROL
